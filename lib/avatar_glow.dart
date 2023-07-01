@@ -17,14 +17,14 @@ class AvatarGlow extends StatefulWidget {
   final bool showTwoGlows;
   final Color glowColor;
   final Duration? startDelay;
-  final double borderRadius;
+  final BorderRadius? borderRadius;
 
   const AvatarGlow({
     Key? key,
     required this.child,
     required this.endRadius,
     this.shape = BoxShape.circle,
-    this.borderRadius =20,
+    this.borderRadius,
     this.duration = const Duration(milliseconds: 2000),
     this.repeat = true,
     this.animate = true,
@@ -118,7 +118,8 @@ class _AvatarGlowState extends State<AvatarGlow>
       builder: (_, widgetChild) {
         final decoration = BoxDecoration(
           shape: widget.shape,
-          borderRadius: BorderRadius.circular(widget.borderRadius),
+          borderRadius:
+              widget.shape != BoxShape.circle ? widget.borderRadius : null,
           // If the user picks a curve that goes below 0 or above 1
           // this opacity will have unexpected effects without clamping
           color: widget.glowColor.withOpacity(

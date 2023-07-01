@@ -52,10 +52,13 @@ class _HomePageState extends State<HomePage> {
               color: Color(0xff686de0),
               child: AvatarGlow(
                 endRadius: 70,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(20),
                 animate: _animate,
                 child: Material(
                   elevation: 8.0,
-                  shape: CircleBorder(),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
                   child: CircleAvatar(
                     backgroundColor: Colors.grey[100],
                     child: Image.asset(
